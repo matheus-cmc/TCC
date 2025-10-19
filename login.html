@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowUp • Login</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <main class="auth-shell">
+    <section class="card">
+      <!-- Lado do formulário -->
+      <div class="panel">
+        <div class="brand"><div class="dot"></div><span>FlowUp</span></div>
+        <h2>Entrar</h2>
+        <p class="sub">Faça login para continuar.</p>
 
-    <!-- FUNCIONALIDADES -->
-  <section class="destinations">
-    <h2>Principais Funcionalidades</h2>
-    <div class="card-grid">
-      <div class="card">
-        <div class="img"></div>
-        <h3>Agendamento Automático</h3>
-        <p>Programe postagens em diversas redes com os melhores horários de engajamento.</p>
-      </div>
-      <div class="card">
-        <div class="img"></div>
-        <h3>Análise de Desempenho</h3>
-        <p>Acompanhe métricas de alcance, curtidas e comentários em tempo real.</p>
-      </div>
-      <div class="card">
-        <div class="img"></div>
-        <h3>Integração Multiplataforma</h3>
-        <p>Gerencie Instagram, Facebook, LinkedIn e outras redes em um único painel.</p>
-      </div>
-      <div class="card">
-        <div class="img"></div>
-        <h3>Geração de Conteúdo</h3>
-        <p>Crie legendas automáticas com IA baseadas no público e estilo da marca.</p>
-      </div>
-    </div>
-    <button class="outline-btn">Explorar todas as funções</button>
-  </section>
+        <form class="form" action="#" method="post">
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" class="input" placeholder="voce@email.com" required>
+          </div>
+          <div>
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" class="input" placeholder="••••••••" required>
+          </div>
 
-  <footer class="footer-news">
-    <div class="newsletter-combined">
-      <h2>Receba Novidades do Projeto</h2>
-      <form>
-        <input type="email" placeholder="Digite seu e-mail">
-        <button type="submit">Inscrever-se</button>
-      </form>
-    </div>
+          <div class="actions">
+            <label class="checkbox"><input type="checkbox"> Lembrar de mim</label>
+            <a href="#" class="helper">Esqueceu a senha?</a>
+          </div>
 
-    <div class="footer-content">
-      <div class="footer-logo">FlowUp</div>
-      <div class="footer-links">
-        <a href="#">Sobre</a>
-        <a href="#">Privacidade</a>
-        <a href="#">Contato</a>
+          <button class="btn btn-gradient" type="submit">Log in</button>
+        </form>
+
+        <div class="alt">ou</div>
+
+        <p class="small">Não tem uma conta?
+          <a href="signup-type.html"><strong>Cadastre-se</strong></a>
+        </p>
       </div>
-    </div>
-    <p class="copy">&copy; 2025 FlowUp - Projeto de Automação de Postagens em Redes Sociais.</p>
-  </footer>
-    
+
+      <!-- Lado visual -->
+      <aside class="visual">
+        <div class="visual-inner">
+          <div>
+            <h1>FlowUp</h1>
+            <p>Automatize suas postagens e economize tempo com um painel simples, inteligente e integrado.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
 </body>
 </html>
