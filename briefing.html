@@ -1,0 +1,188 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing - FlowUp</title>
+  <link rel="stylesheet" href="briefing.css">
+</head>
+<body>
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="dot"></div><span>FlowUp</span>
+  </div>
+
+  <nav class="nav">
+    <a href="#" class="active">
+      <div class="ico i-analytics"></div><span>Análise</span>
+    </a>
+    <a href="#">
+      <div class="ico i-calendar"></div><span>Calendário de Postagem</span>
+    </a>
+    <a href="#">
+      <div class="ico i-manage"></div><span>Gestão</span>
+    </a>
+    <a href="#">
+      <div class="ico i-briefing"></div><span>Briefing</span>
+    </a>
+    <a href="#">
+      <div class="ico i-team"></div><span>Equipe</span>
+    </a>
+    <a href="#">
+      <div class="ico i-settings"></div><span>Configuração</span>
+    </a>
+  </nav>
+</aside>
+
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="content">
+    <header class="header">
+      <div class="empresa">Empresa A ⌄</div>
+      <div class="usuario">
+        <div>
+          <span>Alone Souza</span><br>
+          <small>Profissional</small>
+        </div>
+        <div class="foto"></div>
+      </div>
+    </header>
+
+    <section class="briefing-section">
+      <h1>Briefing de Projeto</h1>
+      <p>Preencha as informações abaixo para criar o briefing completo do projeto.</p>
+
+      <!-- FORMULÁRIO -->
+      <form class="briefing-form" id="briefingForm">
+        <div class="column project-details">
+          <h2>🎯 Sobre o Projeto</h2>
+          <label for="titulo">Título do Projeto</label>
+          <input type="text" id="titulo" placeholder="Digite o título do projeto">
+
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" placeholder="Descreva o projeto..."></textarea>
+
+          <label for="objetivos">Objetivos e Prioridades</label>
+          <textarea id="objetivos" placeholder="Explique os principais objetivos..."></textarea>
+
+          <label for="cta">Chamada para Ação (Call to Action)</label>
+          <input type="text" id="cta" placeholder="Ex: Clique aqui, Saiba mais, etc.">
+
+          <h2>🧩 Execução</h2>
+          <label for="orcamento">Orçamento</label>
+          <input type="text" id="orcamento" placeholder="Informe o orçamento estimado">
+
+          <label for="cronograma">Cronograma</label>
+          <textarea id="cronograma" placeholder="Descreva o cronograma e etapas de execução..."></textarea>
+        </div>
+
+        <div class="column market-comms">
+          <h2>👥 Mercado e Público</h2>
+          <label for="publico">Público-Alvo</label>
+          <textarea id="publico" placeholder="Descreva o público-alvo..."></textarea>
+
+          <label for="concorrencia">Análise da Concorrência</label>
+          <textarea id="concorrencia" placeholder="Quem são os concorrentes e o que fazem..."></textarea>
+
+          <label for="mercado">Análise de Mercado</label>
+          <textarea id="mercado" placeholder="Tendências, oportunidades e contexto de mercado..."></textarea>
+
+          <h2>💬 Comunicação</h2>
+          <label for="mensagens">Mensagens Principais</label>
+          <textarea id="mensagens" placeholder="Quais mensagens principais devem ser comunicadas..."></textarea>
+
+          <label for="tom">Tom de Voz da Marca</label>
+          <input type="text" id="tom" placeholder="Ex: Profissional, descontraído, inspirador...">
+
+          <label for="canais">Canais de Distribuição</label>
+          <textarea id="canais" placeholder="Ex: Instagram, Facebook, E-mail marketing..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit full-width">Criar Briefing</button>
+      </form>
+
+      <!-- VISUALIZAÇÃO -->
+      <div class="briefing-view" id="briefingView" style="display:none;">
+        <h2>✅ Briefing Criado</h2>
+        <p class="briefing-title-view" id="briefingTitle"></p>
+        <div class="briefing-cards-container" id="resumo"></div>
+        <div class="actions">
+          <button id="editarBtn" class="btn-edit">Editar Briefing</button>
+          <button id="novoBtn" class="btn-submit">Novo Briefing</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("briefingForm");
+    const view = document.getElementById("briefingView");
+    const resumo = document.getElementById("resumo");
+    const editarBtn = document.getElementById("editarBtn");
+    const novoBtn = document.getElementById("novoBtn");
+    const briefingTitle = document.getElementById("briefingTitle");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const dados = {
+        titulo: titulo.value,
+        descricao: descricao.value,
+        objetivos: objetivos.value,
+        cta: cta.value,
+        publico: publico.value,
+        concorrencia: concorrencia.value,
+        mercado: mercado.value,
+        mensagens: mensagens.value,
+        tom: tom.value,
+        canais: canais.value,
+        orcamento: orcamento.value,
+        cronograma: cronograma.value
+      };
+
+      briefingTitle.textContent = dados.titulo || "Sem Título";
+
+      resumo.innerHTML = `
+        <div class="briefing-card">
+          <h3>🎯 Projeto</h3>
+          <p><b>Descrição:</b> ${dados.descricao}</p>
+          <p><b>Objetivos:</b> ${dados.objetivos}</p>
+          <p><b>CTA:</b> ${dados.cta}</p>
+        </div>
+        <div class="briefing-card">
+          <h3>👥 Público e Mercado</h3>
+          <p><b>Público:</b> ${dados.publico}</p>
+          <p><b>Concorrência:</b> ${dados.concorrencia}</p>
+          <p><b>Mercado:</b> ${dados.mercado}</p>
+        </div>
+        <div class="briefing-card">
+          <h3>💬 Comunicação</h3>
+          <p><b>Mensagens:</b> ${dados.mensagens}</p>
+          <p><b>Tom:</b> ${dados.tom}</p>
+          <p><b>Canais:</b> ${dados.canais}</p>
+        </div>
+        <div class="briefing-card">
+          <h3>🧩 Execução</h3>
+          <p><b>Orçamento:</b> ${dados.orcamento}</p>
+          <p><b>Cronograma:</b> ${dados.cronograma}</p>
+        </div>
+      `;
+
+      form.style.display = "none";
+      view.style.display = "block";
+    });
+
+    editarBtn.addEventListener("click", () => {
+      view.style.display = "none";
+      form.style.display = "grid";
+    });
+
+    novoBtn.addEventListener("click", () => {
+      form.reset();
+      view.style.display = "none";
+      form.style.display = "grid";
+    });
+  </script>
+</body>
+</html>
