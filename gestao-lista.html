@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlowUp • Gestão (Lista)</title>
+  <link rel="stylesheet" href="gestao-lista.css" />
+</head>
+<body>
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sb-wrap">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="name">FlowUp</span>
+      </div>
+      <nav class="menu">
+        <a class="item" href="#"><i class="ico i-analytics"></i><span>Análise</span></a>
+        <a class="item" href="#"><i class="ico i-calendar"></i><span>Calendário de Postagem</span></a>
+        <a class="item active" href="#"><i class="ico i-manage"></i><span>Gestão</span></a>
+        <a class="item" href="#"><i class="ico i-briefing"></i><span>Briefing</span></a>
+        <a class="item" href="#"><i class="ico i-team"></i><span>Equipe</span></a>
+        <a class="item" href="#"><i class="ico i-settings"></i><span>Configuração</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="company">
+        <div class="avatar"></div>
+        <select class="select" aria-label="Selecionar empresa">
+          <option>Empresa A</option>
+          <option>Empresa B</option>
+          <option>Empresa C</option>
+        </select>
+      </div>
+
+      <div class="profile">
+        <div class="info">
+          <strong>Alone Souza</strong>
+          <span>Profissional</span>
+        </div>
+        <div class="avatar u"></div>
+      </div>
+    </header>
+
+    <!-- Toolbar -->
+    <section class="toolbar card">
+      <div class="filters">
+        <label>Responsável
+          <select id="f-resp">
+            <option value="">Todos</option>
+          </select>
+        </label>
+        <label>Prioridade
+          <select id="f-pri">
+            <option value="">Todas</option>
+            <option>Alta</option><option>Média</option><option>Baixa</option>
+          </select>
+        </label>
+        <label>Tipo
+          <select id="f-tipo">
+            <option value="">Todos</option>
+            <option>Reels</option><option>Vídeo</option><option>Carrossel</option>
+            <option>Foto</option><option>Stories</option>
+          </select>
+        </label>
+        <button id="clearFilters" class="btn ghost">Limpar</button>
+      </div>
+      <button id="btnNovo" class="btn grad">+ Novo Card</button>
+    </section>
+
+    <!-- Lista por status -->
+    <main class="list-area card">
+      <!-- Cabeçalho das colunas -->
+      <header class="thead">
+        <div class="c c-name">Nome</div>
+        <div class="c c-resp">Responsável</div>
+        <div class="c c-date">Data de vencimento</div>
+        <div class="c c-pri">Prioridade</div>
+        <div class="c c-act"></div>
+      </header>
+
+      <div id="groups" class="groups"><!-- JS injeta grupos/linhas --></div>
+    </main>
+  </div>
+</div>
+
+<!-- Modal Novo Card -->
+<dialog id="modal">
+  <form id="formNovo" method="dialog" class="modal">
+    <h3>Novo Card</h3>
+
+    <label>Título
+      <input id="m-titulo" type="text" required placeholder="Ex.: Reels - Promo FDS" />
+    </label>
+
+    <div class="row">
+      <label>Tipo
+        <select id="m-tipo" required>
+          <option>Reels</option><option>Vídeo</option><option>Carrossel</option>
+          <option>Foto</option><option>Stories</option>
+        </select>
+      </label>
+      <label>Prioridade
+        <select id="m-pri" required>
+          <option>Alta</option><option>Média</option><option>Baixa</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="row">
+      <label>Responsável
+        <input id="m-resp" type="text" required placeholder="Ex.: Mariana" />
+      </label>
+      <label>Data
+        <input id="m-data" type="date" required />
+      </label>
+    </div>
+
+    <label>Coluna (status)
+      <select id="m-status" required>
+        <option>Redação</option><option>Gravação</option><option>Edição de vídeo</option>
+        <option>Design</option><option>Revisão</option><option>Fotografia</option>
+        <option>Aprovação</option><option>Aguardando Aprovação</option><option>Pronto pra Postar</option>
+      </select>
+    </label>
+
+    <menu>
+      <button type="reset" id="m-cancel" class="btn ghost">Cancelar</button>
+      <button type="submit" class="btn grad">Adicionar</button>
+    </menu>
+  </form>
+</dialog>
+
+<script src="gestao-lista.js"></script>
+</body>
+</html>
