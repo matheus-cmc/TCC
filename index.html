@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipe | Painel</title>
+  <link rel="stylesheet" href="equipe.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="dot"></div>
+      <span>FlowUp</span>
+    </div>
+
+    <nav class="nav">
+      <a href="dashboard.html"><div class="ico i-analytics"></div><span>Análise</span></a>
+      <a href="calendario.html"><div class="ico i-calendar"></div><span>Calendário de Postagem</span></a>
+      <a href="gerenciar.html"><div class="ico i-manage"></div><span>Gestão</span></a>
+      <a href="briefing.html"><div class="ico i-briefing"></div><span>Briefing</span></a>
+      <a href="equipe.html" class="active"><div class="ico i-team"></div><span>Equipe</span></a>
+      <a href="config.html"><div class="ico i-settings"></div><span>Configuração</span></a>
+  </nav>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="company">
+      <div class="avatar"></div>
+      <select class="select">
+        <option>Empresa A</option>
+      </select>
+    </div>
+    <div class="user">
+      <div class="info">
+        <div class="name">Alone Souza</div>
+        <div class="role">Profissional</div>
+      </div>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main equipe-page">
+    <div class="card convite">
+      <h3>Convidar Novo Membro</h3>
+      <p class="sub">Adicione um novo membro à equipe e defina a função antes de enviar o convite.</p>
+      <form id="conviteForm">
+        <input type="email" id="emailConvite" placeholder="E-mail do membro" required>
+        <select id="funcaoConvite" required>
+          <option value="">Selecione a função</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Gestor">Gestor</option>
+          <option value="Editor">Editor</option>
+          <option value="Revisor">Revisor</option>
+        </select>
+        <button type="submit" class="link">Enviar Convite</button>
+      </form>
+    </div>
+
+    <div class="card membros">
+      <h3>Membros da Equipe</h3>
+      <p class="sub">Usuários ativos e suas funções.</p>
+      <table class="tabela-membros">
+        <thead>
+          <tr><th>Nome</th><th>E-mail</th><th>Função</th></tr>
+        </thead>
+        <tbody id="listaMembros">
+          <tr>
+            <td>Maria Santos</td>
+            <td>maria@email.com</td>
+            <td><span class="tag admin">Administrador</span></td>
+          </tr>
+          <tr>
+            <td>João Oliveira</td>
+            <td>joao@email.com</td>
+            <td><span class="tag gestor">Gestor</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card permissoes">
+      <h3>Permissões por Função</h3>
+      <table class="tabela-permissoes">
+        <thead>
+          <tr><th>Função</th><th>Criar</th><th>Editar</th><th>Publicar</th><th>Gerenciar Equipe</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Administrador</td><td>✔️</td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+          <tr><td>Gestor</td><td>✔️</td><td>✔️</td><td>✔️</td><td>❌</td></tr>
+          <tr><td>Editor</td><td>✔️</td><td>✔️</td><td>❌</td><td>❌</td></tr>
+          <tr><td>Revisor</td><td>❌</td><td>✔️</td><td>❌</td><td>❌</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card pendentes">
+      <h3>Convites Pendentes</h3>
+      <table class="tabela-pendentes">
+        <thead>
+          <tr><th>E-mail</th><th>Função</th><th>Status</th><th>Ações</th></tr>
+        </thead>
+        <tbody id="listaPendentes">
+          <tr>
+            <td>ana@email.com</td>
+            <td>Editor</td>
+            <td><span class="status">Pendente</span></td>
+            <td><button class="link-outline reenviar">Reenviar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="equipe.js"></script>
+</body>
+</html>
