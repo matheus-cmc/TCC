@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Post - FlowUp</title>
+  <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+<div class="app">
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="sb-wrap">
+      <div class="brand">
+        <div class="dot"></div>
+        <div class="name">FlowUp</div>
+      </div>
+      <nav class="menu">
+        <a href="#" class="item">
+          <div class="ico i-analytics"></div><span>Análise</span>
+        </a>
+        <a href="#" class="item active">
+          <div class="ico i-calendar"></div><span>Calendário de Postagem</span>
+        </a>
+        <a href="#" class="item">
+          <div class="ico i-manage"></div><span>Gestão</span>
+        </a>
+        <a href="#" class="item">
+          <div class="ico i-briefing"></div><span>Briefing</span>
+        </a>
+        <a href="#" class="item">
+          <div class="ico i-team"></div><span>Equipe</span>
+        </a>
+        <a href="#" class="item">
+          <div class="ico i-settings"></div><span>Configuração</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ===== CONTEÚDO ===== -->
+  <div class="content">
+    <!-- TOPO -->
+    <header class="topbar">
+      <div class="company">
+        <select class="select">
+          <option>Empresa A</option>
+          <option>Empresa B</option>
+        </select>
+      </div>
+      <div class="profile">
+        <div class="avatar u"></div>
+        <div class="info">
+          <strong>Alonso</strong>
+          <span>Produtor</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar card">
+      <div class="filters">
+        <label>
+          Título do Post
+          <input type="text" placeholder="Digite o título">
+        </label>
+        <label>
+          Plataforma
+          <select>
+            <option>Instagram</option>
+            <option>Facebook</option>
+            <option>LinkedIn</option>
+            <option>Twitter</option>
+          </select>
+        </label>
+        <label>
+          Data de Publicação
+          <input type="date">
+        </label>
+        <label>
+          Hora
+          <input type="time">
+        </label>
+      </div>
+      <button class="btn grad">Agendar Post</button>
+    </div>
+
+    <!-- LISTA DE POSTS -->
+    <div class="list-area card">
+      <div class="thead">
+        <div>Título</div>
+        <div class="c-resp">Responsáveis</div>
+        <div class="c-date">Data</div>
+        <div class="c-pri">Plataforma</div>
+        <div class="c-act"></div>
+      </div>
+
+      <div class="groups">
+        <div class="group-head">
+          <div class="status-pill"><div class="dot"></div>Agendados</div>
+          <span class="group-count">(3)</span>
+          <button class="group-add">+ Novo</button>
+        </div>
+
+        <!-- LINHA 1 -->
+        <div class="row">
+          <div class="cell-name">
+            <div class="checkbox"></div>
+            <div class="title">Campanha Outubro Rosa</div>
+          </div>
+          <div class="avatars">
+            <div class="av p1">MC</div>
+            <div class="av p2">AL</div>
+          </div>
+          <div class="date">26/10/2025</div>
+          <div class="pri">
+            <div class="flag alta"></div>Instagram
+          </div>
+          <div class="act"><button class="kebab">⋮</button></div>
+        </div>
+
+        <!-- LINHA 2 -->
+        <div class="row">
+          <div class="cell-name">
+            <div class="checkbox"></div>
+            <div class="title">Black Friday Teaser</div>
+          </div>
+          <div class="avatars">
+            <div class="av p3">RS</div>
+            <div class="av p4">TM</div>
+          </div>
+          <div class="date">10/11/2025</div>
+          <div class="pri">
+            <div class="flag media"></div>Facebook
+          </div>
+          <div class="act"><button class="kebab">⋮</button></div>
+        </div>
+
+        <!-- LINHA 3 -->
+        <div class="row">
+          <div class="cell-name">
+            <div class="checkbox"></div>
+            <div class="title">Natal Solidário</div>
+          </div>
+          <div class="avatars">
+            <div class="av p2">AL</div>
+            <div class="av p1">MC</div>
+          </div>
+          <div class="date">15/12/2025</div>
+          <div class="pri">
+            <div class="flag baixa"></div>LinkedIn
+          </div>
+          <div class="act"><button class="kebab">⋮</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
