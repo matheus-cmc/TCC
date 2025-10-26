@@ -156,5 +156,135 @@
     </div>
   </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const agendarBtn = document.querySelector('.btn.grad');
+  const listArea = document.querySelector('.groups');
+  const avatarColors = ['p1','p2','p3','p4'];
+
+  // Função que adiciona menu de ações a uma linha
+  function attachActions(row) {
+    const kebabBtn = row.querySelector('.kebab');
+    if (!kebabBtn) return;
+
+    kebabBtn.addEventListener('click', (e) => {
+      // Fecha qualquer menu aberto
+      document.querySelectorAll('.action-menu').forEach(m => m.remove());
+
+      const menu = document.createElement('div');
+      menu.classList.add('action-menu');
+      menu.style.position = 'absolute';
+      menu.style.background = '#fff';
+      menu.style.border = '1px solid var(--line)';
+      menu.style.borderRadius = '10px';
+      menu.style.boxShadow = '0 4px 12px rgba(16,24,40,0.08)';
+      menu.style.right = '0';
+      menu.style.top = '100%';
+      menu.style.zIndex = '10';
+      menu.style.overflow = 'hidden';
+      menu.innerHTML = `
+        <button class="edit-btn" style="padding:10px 14px; width:100%; border:none; background:none; text-align:left; cursor:pointer;">Editar</button>
+        <button class="delete-btn" style="padding:10px 14px; width:100%; border:none; background:none; text-align:left; cursor:pointer;">Excluir</button>
+      `;
+
+      kebabBtn.parentElement.appendChild(menu);
+
+      // Excluir
+      menu.querySelector('.delete-btn').addEventListener('click', () => row.remove());
+
+      // Editar
+      menu.querySelector('.edit-btn').addEventListener('click', () => {
+        const titleElem = row.querySelector('.title');
+        const priElem = row.querySelector('.pri');
+        const dateElem = row.querySelector('.date');
+        const avatarsElem = row.querySelector('.avatars');
+
+        const newTitle = prompt('Novo título do post:', titleElem.textContent);
+        if (newTitle) titleElem.textContent = newTitle;
+
+        const newPlataforma = prompt('Nova plataforma:', priElem.textContent.replace(/Instagram|Facebook|LinkedIn|Twitter/g,'').trim());
+        if (newPlataforma) priElem.innerHTML = `<div class="flag media"></div>${newPlataforma}`;
+
+        const newDate = prompt('Nova data (dd/mm/aaaa hh:mm):', dateElem.textContent);
+        if (newDate) dateElem.textContent = newDate;
+
+        const newResp = prompt('Responsáveis (separados por vírgula):', Array.from(avatarsElem.querySelectorAll('.av')).map(a => a.textContent).join(', '));
+        if (newResp) {
+          const respArray = newResp.split(',').map(r => r.trim());
+          avatarsElem.innerHTML = respArray.map((r,i) => `<div class="av ${avatarColors[i % avatarColors.length]}">${r}</div>`).join('');
+        }
+
+        menu.remove();
+      });
+    });
+
+    // Fecha menu se clicar fora
+    document.addEventListener('click', (event) => {
+      if (!kebabBtn.contains(event.target)) {
+        document.querySelectorAll('.action-menu').forEach(m => m.remove());
+      }
+    });
+  }
+
+  // Aplica para todas as linhas existentes
+  document.querySelectorAll('.groups .row').forEach(row => attachActions(row));
+
+  // Cria nova linha
+  function createRow(title, plataforma, data, responsaveis = []) {
+    const row = document.createElement('div');
+    row.classList.add('row');
+
+    const avatarsHTML = responsaveis.map((r,i) => `<div class="av ${avatarColors[i % avatarColors.length]}">${r}</div>`).join('');
+
+    row.innerHTML = `
+      <div class="cell-name">
+        <div class="checkbox"></div>
+        <div class="title">${title}</div>
+      </div>
+      <div class="avatars">${avatarsHTML}</div>
+      <div class="date">${data}</div>
+      <div class="pri">
+        <div class="flag media"></div>${plataforma}
+      </div>
+      <div class="act">
+        <button class="kebab">⋮</button>
+      </div>
+    `;
+
+    attachActions(row);
+    return row;
+  }
+
+  // Evento do botão Agendar Post
+  agendarBtn.addEventListener('click', () => {
+    const titulo = document.querySelector('.filters input[type="text"]').value.trim();
+    const plataforma = document.querySelector('.filters select').value;
+    const data = document.querySelector('.filters input[type="date"]').value;
+    const hora = document.querySelector('.filters input[type="time"]').value;
+
+    if (!titulo || !plataforma || !data || !hora) {
+      alert('Preencha todos os campos!');
+      return;
+    }
+
+    const responsaveisInput = prompt('Digite os responsáveis separados por vírgula:');
+    const responsaveis = responsaveisInput ? responsaveisInput.split(',').map(r => r.trim()) : ['AL'];
+
+    const fullData = `${data} ${hora}`;
+    const newRow = createRow(titulo, plataforma, fullData, responsaveis);
+
+    // Insere no topo da lista
+    const firstRow = listArea.querySelector('.row');
+    if (firstRow) listArea.insertBefore(newRow, firstRow);
+    else listArea.appendChild(newRow);
+
+    // Limpar campos
+    document.querySelector('.filters input[type="text"]').value = '';
+    document.querySelector('.filters input[type="date"]').value = '';
+    document.querySelector('.filters input[type="time"]').value = '';
+  });
+});
+</script>
+
 </body>
 </html>
