@@ -307,6 +307,106 @@ body {
   .thead, .row { grid-template-columns: 1fr; }
   .c-resp, .c-date, .c-pri, .c-act { display: none; }
   .row .avatars, .row .date, .row .pri, .row .act
+.row .avatars,
+  .row .date,
+  .row .pri,
+  .row .act {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    border-radius: 12px;
+    background: #fff;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
+  }
+
+  .cell-name {
+    justify-content: space-between;
+  }
+
+  .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .checkbox {
+    flex-shrink: 0;
+  }
+
+  .group-head {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .filters label {
+    width: 100%;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .list-area {
+    margin: 0 14px 14px;
+  }
+}
+
+/* Melhor adaptação para telas muito pequenas */
+@media (max-width: 480px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .company {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .profile {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .select {
+    width: 100%;
+  }
+}
+
+/* Ajuste visual geral para suavizar o layout */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d0d5dd;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #98a2b3;
+}
+/* ---------- CORES DOS ÍCONES ---------- */
+.item .ico {
+  color: #e298c7; /* Cor padrão: preto */
+  transition: color 0.3s ease;
+}
+
+.item.active .ico {
+  color: #fff; /* Ícone branco quando ativo */
+}
 
 
-  /* ---------- FIM ---------- */
+
+/* ---------- FIM DO CSS ---------- */
