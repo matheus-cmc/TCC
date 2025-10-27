@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowUp • Configurações</title>
+  <link rel="stylesheet" href="/Menu/menu.css">
+  <link rel="stylesheet" href="/Configuracoes/config.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+          <span>FlowUp</span>
+      </div>
+
+      <nav class="nav">
+        <a href="/Menu/menu.html">
+          <div class="ico i-analytics"></div><span>Mapa Geral</span>
+        </a>
+        <a href="/Planejamento/planejamento.html">
+          <div class="ico i-planning"></div><span>Planejamento Mensal</span>
+        </a>
+        <a href="#">
+          <div class="ico i-post"></div><span>Agendamento de Postagem</span>
+        </a>
+        <a href="#">
+          <div class="ico i-calendar"></div><span>Calendário de Postagem</span>
+        </a>
+        <a href="#">
+          <div class="ico i-manage"></div><span>Gestão de Projetos</span>
+        </a>
+        <a href="/Briefing/briefing.html">
+          <div class="ico i-briefing"></div><span>Briefing</span>
+        </a>
+        <a href="#">
+          <div class="ico i-team"></div><span>Equipe</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="company">
+        <div class="avatar" title="Logo da Empresa"></div>
+        <div class="custom-select">
+          <div class="select-selected">
+            <span>Empresa A</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="select-items">
+            <div class="select-option" data-value="Empresa A">
+              <div class="option-avatar"></div>
+              <span>Empresa A</span>
+            </div>
+            <div class="select-option" data-value="Empresa B">
+              <div class="option-avatar"></div>
+              <span>Empresa B</span>
+            </div>
+            <div class="select-option" data-value="Empresa C">
+              <div class="option-avatar"></div>
+              <span>Empresa C</span>
+            </div>
+            <div class="select-divider"></div>
+            <div class="select-option select-new-company" data-value="new">
+              <div class="option-avatar new-company-icon"></div>
+              <span>Cadastrar empresa nova</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="user" id="user-menu-trigger">
+        <div>
+          <div class="name">Alone Souza</div>
+          <div class="role">Profissional</div>
+        </div>
+        <div class="avatar" title="Seu perfil"></div>
+        
+        <div class="user-menu" id="user-menu">
+          <div class="user-menu-header">
+            <div class="user-menu-avatar"></div>
+            <div class="user-menu-info">
+              <div class="user-menu-name">Alone Souza</div>
+              <div class="user-menu-email">alone.souza@flowup.com</div>
+            </div>
+          </div>
+          <div class="user-menu-divider"></div>
+          <a href="/Perfil/perfil.html" class="user-menu-item">
+            <div class="user-menu-icon i-profile"></div>
+            <span>Meu Perfil</span>
+          </a>
+          <a href="/Mensagem/mensag.js" class="user-menu-item">
+            <div class="user-menu-icon i-messages"></div>
+            <span>Mensagens</span>
+            <span class="user-menu-badge">3</span>
+          </a>
+          <a href="/Configuração/config.html" class="user-menu-item">
+            <div class="user-menu-icon i-settings"></div>
+            <span>Configurações</span>
+          </a>
+          <div class="user-menu-divider"></div>
+          <a href="#" class="user-menu-item">
+            <div class="user-menu-icon i-logout"></div>
+            <span>Sair</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main settings-main">
+      <div class="settings-container">
+        <div class="settings-header">
+          <h1>Configurações</h1>
+          <p class="settings-subtitle">Gerencie as configurações da sua conta e preferências</p>
+        </div>
+
+        <div class="settings-content">
+          <!-- Menu Lateral -->
+          <div class="settings-sidebar">
+            <nav class="settings-nav">
+              <a href="#conta" class="settings-nav-item active" data-tab="conta">
+                <div class="nav-icon i-account"></div>
+                <span>Conta</span>
+              </a>
+              <a href="#notificacoes" class="settings-nav-item" data-tab="notificacoes">
+                <div class="nav-icon i-bell"></div>
+                <span>Notificações</span>
+              </a>
+              <a href="#privacidade" class="settings-nav-item" data-tab="privacidade">
+                <div class="nav-icon i-shield"></div>
+                <span>Privacidade</span>
+              </a>
+              <a href="#integracao" class="settings-nav-item" data-tab="integracao">
+                <div class="nav-icon i-link"></div>
+                <span>Integrações</span>
+              </a>
+              <a href="#seguranca" class="settings-nav-item" data-tab="seguranca">
+                <div class="nav-icon i-lock"></div>
+                <span>Segurança</span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- Conteúdo das Configurações -->
+          <div class="settings-panels">
+            <!-- Painel Conta -->
+            <div class="settings-panel active" id="conta-panel">
+              <div class="panel-header">
+                <h2>Configurações da Conta</h2>
+                <p>Gerencie suas informações básicas da conta</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Informações Básicas</h3>
+                  <form class="settings-form">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="settingsFirstName">Nome</label>
+                        <input type="text" id="settingsFirstName" value="Alone">
+                      </div>
+                      <div class="form-group">
+                        <label for="settingsLastName">Sobrenome</label>
+                        <input type="text" id="settingsLastName" value="Souza">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="settingsEmail">E-mail</label>
+                      <input type="email" id="settingsEmail" value="alone.souza@flowup.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="settingsPhone">Telefone</label>
+                      <input type="tel" id="settingsPhone" value="(11) 99999-9999">
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn-secondary">Cancelar</button>
+                      <button type="submit" class="btn-primary">Salvar Alterações</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="card">
+                  <h3>Preferências de Idioma</h3>
+                  <div class="form-group">
+                    <label for="language">Idioma</label>
+                    <select id="language">
+                      <option value="pt-br" selected>Português (Brasil)</option>
+                      <option value="en">English</option>
+                      <option value="es">Español</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="timezone">Fuso Horário</label>
+                    <select id="timezone">
+                      <option value="sao-paulo" selected>America/Sao_Paulo (GMT-3)</option>
+                      <option value="new-york">America/New_York (GMT-5)</option>
+                      <option value="london">Europe/London (GMT+0)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel Notificações -->
+            <div class="settings-panel" id="notificacoes-panel">
+              <div class="panel-header">
+                <h2>Configurações de Notificação</h2>
+                <p>Controle como e quando você recebe notificações</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Notificações por E-mail</h3>
+                  <div class="toggle-list">
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Notificações de Projetos</div>
+                        <div class="toggle-description">Receba atualizações sobre projetos que você segue</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Lembretes de Postagem</div>
+                        <div class="toggle-description">Notificações sobre posts agendados</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Relatórios Semanais</div>
+                        <div class="toggle-description">Resumo semanal de desempenho</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>Notificações no Sistema</h3>
+                  <div class="toggle-list">
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Mensagens Diretas</div>
+                        <div class="toggle-description">Notificações de novas mensagens</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Atividades da Equipe</div>
+                        <div class="toggle-description">Atualizações das atividades dos colegas</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Alertas do Sistema</div>
+                        <div class="toggle-description">Notificações importantes do sistema</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel Privacidade -->
+            <div class="settings-panel" id="privacidade-panel">
+              <div class="panel-header">
+                <h2>Configurações de Privacidade</h2>
+                <p>Controle sua privacidade e dados</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Visibilidade do Perfil</h3>
+                  <div class="radio-group">
+                    <label class="radio-option">
+                      <input type="radio" name="profileVisibility" value="public" checked>
+                      <span class="radio-checkmark"></span>
+                      <div class="radio-content">
+                        <div class="radio-title">Público</div>
+                        <div class="radio-description">Qualquer pessoa na empresa pode ver seu perfil</div>
+                      </div>
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="profileVisibility" value="private">
+                      <span class="radio-checkmark"></span>
+                      <div class="radio-content">
+                        <div class="radio-title">Privado</div>
+                        <div class="radio-description">Apenas pessoas que você aprovar podem ver seu perfil</div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>Controles de Dados</h3>
+                  <div class="data-controls">
+                    <div class="data-control-item">
+                      <div class="data-control-info">
+                        <div class="data-control-title">Exportar Dados</div>
+                        <div class="data-control-description">Baixe uma cópia dos seus dados</div>
+                      </div>
+                      <button class="btn-outline">Exportar</button>
+                    </div>
+                    <div class="data-control-item">
+                      <div class="data-control-info">
+                        <div class="data-control-title">Excluir Conta</div>
+                        <div class="data-control-description">Exclua permanentemente sua conta e dados</div>
+                      </div>
+                      <button class="btn-danger">Excluir Conta</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel Integrações -->
+            <div class="settings-panel" id="integracao-panel">
+              <div class="panel-header">
+                <h2>Integrações</h2>
+                <p>Conecte suas redes sociais e ferramentas</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Redes Sociais Conectadas</h3>
+                  <div class="integrations-list">
+                    <div class="integration-item connected">
+                      <div class="integration-icon instagram"></div>
+                      <div class="integration-info">
+                        <div class="integration-name">Instagram</div>
+                        <div class="integration-status">Conectado</div>
+                      </div>
+                      <button class="btn-outline">Gerenciar</button>
+                    </div>
+                    <div class="integration-item connected">
+                      <div class="integration-icon facebook"></div>
+                      <div class="integration-info">
+                        <div class="integration-name">Facebook</div>
+                        <div class="integration-status">Conectado</div>
+                      </div>
+                      <button class="btn-outline">Gerenciar</button>
+                    </div>
+                    <div class="integration-item">
+                      <div class="integration-icon twitter"></div>
+                      <div class="integration-info">
+                        <div class="integration-name">Twitter</div>
+                        <div class="integration-status">Não conectado</div>
+                      </div>
+                      <button class="btn-primary">Conectar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel Segurança -->
+            <div class="settings-panel" id="seguranca-panel">
+              <div class="panel-header">
+                <h2>Segurança</h2>
+                <p>Proteja sua conta e dados</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Alterar Senha</h3>
+                  <form class="security-form">
+                    <div class="form-group">
+                      <label for="currentPassword">Senha Atual</label>
+                      <input type="password" id="currentPassword" placeholder="Digite sua senha atual">
+                    </div>
+                    <div class="form-group">
+                      <label for="newPassword">Nova Senha</label>
+                      <input type="password" id="newPassword" placeholder="Digite a nova senha">
+                    </div>
+                    <div class="form-group">
+                      <label for="confirmPassword">Confirmar Nova Senha</label>
+                      <input type="password" id="confirmPassword" placeholder="Confirme a nova senha">
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn-primary">Alterar Senha</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="card">
+                  <h3>Sessões Ativas</h3>
+                  <div class="sessions-list">
+                    <div class="session-item current">
+                      <div class="session-info">
+                        <div class="session-device">Chrome • Windows</div>
+                        <div class="session-details">São Paulo, Brasil • Agora</div>
+                      </div>
+                      <div class="session-status">Atual</div>
+                    </div>
+                    <div class="session-item">
+                      <div class="session-info">
+                        <div class="session-device">Safari • iPhone</div>
+                        <div class="session-details">São Paulo, Brasil • 2 horas atrás</div>
+                      </div>
+                      <button class="btn-outline">Encerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/Menu/menu.js"></script>
+  <script src="/Configuracoes/config.js"></script>
+</body>
+</html>
