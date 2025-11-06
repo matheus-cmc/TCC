@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FlowUp • Configurações</title>
   <link rel="stylesheet" href="/Menu/menu.css">
-  <link rel="stylesheet" href="/Configuracoes/config.css">
+  <link rel="stylesheet" href="/Configuração/config.css">
 </head>
 <body>
   <div class="app">
@@ -96,12 +96,12 @@
             <span>Mensagens</span>
             <span class="user-menu-badge">3</span>
           </a>
-          <a href="/Configuração/config.html" class="user-menu-item">
+          <a href="/Configuracoes/config.html" class="user-menu-item">
             <div class="user-menu-icon i-settings"></div>
             <span>Configurações</span>
           </a>
           <div class="user-menu-divider"></div>
-          <a href="#" class="user-menu-item">
+          <a href="/Perfil/perfil.html" class="user-menu-item">
             <div class="user-menu-icon i-logout"></div>
             <span>Sair</span>
           </a>
@@ -111,6 +111,45 @@
 
     <!-- Conteúdo Principal -->
     <main class="main settings-main">
+      <!-- Menu Mobile Flutuante -->
+      <button class="settings-mobile-toggle" id="mobile-menu-toggle">
+        <div class="toggle-icon"></div>
+        <span>Menu</span>
+      </button>
+
+      <!-- Overlay -->
+      <div class="floating-menu-overlay" id="menu-overlay"></div>
+
+      <!-- Container Flutuante do Menu -->
+      <div class="settings-floating-menu" id="floating-menu">
+        <div class="floating-menu-header">
+          <h3>Navegação Rápida</h3>
+          <button class="floating-menu-close" id="close-floating-menu">&times;</button>
+        </div>
+        <nav class="floating-nav">
+          <a href="#conta" class="floating-nav-item active" data-tab="conta">
+            <div class="nav-icon i-account"></div>
+            <span>Configurações da Conta</span>
+          </a>
+          <a href="#agendamento" class="floating-nav-item" data-tab="agendamento">
+            <div class="nav-icon i-calendar"></div>
+            <span>Agendamento</span>
+          </a>
+          <a href="#projetos" class="floating-nav-item" data-tab="projetos">
+            <div class="nav-icon i-manage"></div>
+            <span>Gestão de Projetos</span>
+          </a>
+          <a href="#briefing" class="floating-nav-item" data-tab="briefing">
+            <div class="nav-icon i-briefing"></div>
+            <span>Briefing</span>
+          </a>
+          <a href="#equipe" class="floating-nav-item" data-tab="equipe">
+            <div class="nav-icon i-team"></div>
+            <span>Equipe</span>
+          </a>
+        </nav>
+      </div>
+
       <div class="settings-container">
         <div class="settings-header">
           <h1>Configurações</h1>
@@ -118,29 +157,36 @@
         </div>
 
         <div class="settings-content">
-          <!-- Menu Lateral -->
+          <!-- Menu Lateral Desktop -->
           <div class="settings-sidebar">
             <nav class="settings-nav">
-              <a href="#conta" class="settings-nav-item active" data-tab="conta">
-                <div class="nav-icon i-account"></div>
-                <span>Conta</span>
-              </a>
-              <a href="#notificacoes" class="settings-nav-item" data-tab="notificacoes">
-                <div class="nav-icon i-bell"></div>
-                <span>Notificações</span>
-              </a>
-              <a href="#privacidade" class="settings-nav-item" data-tab="privacidade">
-                <div class="nav-icon i-shield"></div>
-                <span>Privacidade</span>
-              </a>
-              <a href="#integracao" class="settings-nav-item" data-tab="integracao">
-                <div class="nav-icon i-link"></div>
-                <span>Integrações</span>
-              </a>
-              <a href="#seguranca" class="settings-nav-item" data-tab="seguranca">
-                <div class="nav-icon i-lock"></div>
-                <span>Segurança</span>
-              </a>
+              <div class="nav-section">
+                <h4 class="nav-section-title">Configurações da Conta</h4>
+                <a href="#conta" class="settings-nav-item active" data-tab="conta">
+                  <div class="nav-icon i-account"></div>
+                  <span>Informações da Conta</span>
+                </a>
+              </div>
+
+              <div class="nav-section">
+                <h4 class="nav-section-title">Agendamento de Postagem</h4>
+                <a href="#agendamento" class="settings-nav-item" data-tab="agendamento">
+                  <div class="nav-icon i-calendar"></div>
+                  <span>Calendário de Postagem</span>
+                </a>
+                <a href="#projetos" class="settings-nav-item" data-tab="projetos">
+                  <div class="nav-icon i-manage"></div>
+                  <span>Gestão de Projetos</span>
+                </a>
+                <a href="#briefing" class="settings-nav-item" data-tab="briefing">
+                  <div class="nav-icon i-briefing"></div>
+                  <span>Briefing</span>
+                </a>
+                <a href="#equipe" class="settings-nav-item" data-tab="equipe">
+                  <div class="nav-icon i-team"></div>
+                  <span>Equipe</span>
+                </a>
+              </div>
             </nav>
           </div>
 
@@ -156,27 +202,27 @@
               <div class="settings-cards">
                 <div class="card">
                   <h3>Informações Básicas</h3>
-                  <form class="settings-form">
+                  <form class="settings-form" id="basic-info-form">
                     <div class="form-row">
                       <div class="form-group">
                         <label for="settingsFirstName">Nome</label>
-                        <input type="text" id="settingsFirstName" value="Alone">
+                        <input type="text" id="settingsFirstName" value="Alone" required>
                       </div>
                       <div class="form-group">
                         <label for="settingsLastName">Sobrenome</label>
-                        <input type="text" id="settingsLastName" value="Souza">
+                        <input type="text" id="settingsLastName" value="Souza" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="settingsEmail">E-mail</label>
-                      <input type="email" id="settingsEmail" value="alone.souza@flowup.com">
+                      <input type="email" id="settingsEmail" value="alone.souza@flowup.com" required>
                     </div>
                     <div class="form-group">
                       <label for="settingsPhone">Telefone</label>
-                      <input type="tel" id="settingsPhone" value="(11) 99999-9999">
+                      <input type="tel" id="settingsPhone" value="(11) 99999-9999" required>
                     </div>
                     <div class="form-actions">
-                      <button type="button" class="btn-secondary">Cancelar</button>
+                      <button type="button" class="btn-secondary" id="cancel-basic-info">Cancelar</button>
                       <button type="submit" class="btn-primary">Salvar Alterações</button>
                     </div>
                   </form>
@@ -184,192 +230,98 @@
 
                 <div class="card">
                   <h3>Preferências de Idioma</h3>
-                  <div class="form-group">
-                    <label for="language">Idioma</label>
-                    <select id="language">
-                      <option value="pt-br" selected>Português (Brasil)</option>
-                      <option value="en">English</option>
-                      <option value="es">Español</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="timezone">Fuso Horário</label>
-                    <select id="timezone">
-                      <option value="sao-paulo" selected>America/Sao_Paulo (GMT-3)</option>
-                      <option value="new-york">America/New_York (GMT-5)</option>
-                      <option value="london">Europe/London (GMT+0)</option>
-                    </select>
-                  </div>
+                  <form class="settings-form" id="language-form">
+                    <div class="form-group">
+                      <label for="language">Idioma</label>
+                      <select id="language">
+                        <option value="pt-br" selected>Português (Brasil)</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="timezone">Fuso Horário</label>
+                      <select id="timezone">
+                        <option value="sao-paulo" selected>America/Sao_Paulo (GMT-3)</option>
+                        <option value="new-york">America/New_York (GMT-5)</option>
+                        <option value="london">Europe/London (GMT+0)</option>
+                      </select>
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn-secondary" id="cancel-language">Cancelar</button>
+                      <button type="submit" class="btn-primary">Salvar Preferências</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
 
-            <!-- Painel Notificações -->
-            <div class="settings-panel" id="notificacoes-panel">
+            <!-- Painel Agendamento -->
+            <div class="settings-panel" id="agendamento-panel">
               <div class="panel-header">
-                <h2>Configurações de Notificação</h2>
-                <p>Controle como e quando você recebe notificações</p>
+                <h2>Calendário de Postagem</h2>
+                <p>Configure as preferências do seu calendário de postagens</p>
               </div>
 
               <div class="settings-cards">
                 <div class="card">
-                  <h3>Notificações por E-mail</h3>
-                  <div class="toggle-list">
+                  <h3>Configurações do Calendário</h3>
+                  <form class="settings-form">
+                    <div class="form-group">
+                      <label for="defaultPostTime">Horário Padrão para Postagens</label>
+                      <input type="time" id="defaultPostTime" value="09:00">
+                    </div>
+                    <div class="form-group">
+                      <label for="postLimit">Limite de Postagens por Dia</label>
+                      <input type="number" id="postLimit" value="5" min="1" max="20">
+                    </div>
                     <div class="toggle-item">
                       <div class="toggle-info">
-                        <div class="toggle-title">Notificações de Projetos</div>
-                        <div class="toggle-description">Receba atualizações sobre projetos que você segue</div>
+                        <div class="toggle-title">Postagem Automática</div>
+                        <div class="toggle-description">Publicar automaticamente nas redes sociais</div>
                       </div>
                       <label class="toggle">
                         <input type="checkbox" checked>
                         <span class="toggle-slider"></span>
                       </label>
                     </div>
-                    <div class="toggle-item">
-                      <div class="toggle-info">
-                        <div class="toggle-title">Lembretes de Postagem</div>
-                        <div class="toggle-description">Notificações sobre posts agendados</div>
-                      </div>
-                      <label class="toggle">
-                        <input type="checkbox" checked>
-                        <span class="toggle-slider"></span>
-                      </label>
+                    <div class="form-actions">
+                      <button type="button" class="btn-secondary">Cancelar</button>
+                      <button type="submit" class="btn-primary">Salvar Configurações</button>
                     </div>
-                    <div class="toggle-item">
-                      <div class="toggle-info">
-                        <div class="toggle-title">Relatórios Semanais</div>
-                        <div class="toggle-description">Resumo semanal de desempenho</div>
-                      </div>
-                      <label class="toggle">
-                        <input type="checkbox">
-                        <span class="toggle-slider"></span>
-                      </label>
-                    </div>
-                  </div>
+                  </form>
                 </div>
 
-                <div class="card">
-                  <h3>Notificações no Sistema</h3>
-                  <div class="toggle-list">
-                    <div class="toggle-item">
-                      <div class="toggle-info">
-                        <div class="toggle-title">Mensagens Diretas</div>
-                        <div class="toggle-description">Notificações de novas mensagens</div>
-                      </div>
-                      <label class="toggle">
-                        <input type="checkbox" checked>
-                        <span class="toggle-slider"></span>
-                      </label>
-                    </div>
-                    <div class="toggle-item">
-                      <div class="toggle-info">
-                        <div class="toggle-title">Atividades da Equipe</div>
-                        <div class="toggle-description">Atualizações das atividades dos colegas</div>
-                      </div>
-                      <label class="toggle">
-                        <input type="checkbox" checked>
-                        <span class="toggle-slider"></span>
-                      </label>
-                    </div>
-                    <div class="toggle-item">
-                      <div class="toggle-info">
-                        <div class="toggle-title">Alertas do Sistema</div>
-                        <div class="toggle-description">Notificações importantes do sistema</div>
-                      </div>
-                      <label class="toggle">
-                        <input type="checkbox" checked>
-                        <span class="toggle-slider"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Painel Privacidade -->
-            <div class="settings-panel" id="privacidade-panel">
-              <div class="panel-header">
-                <h2>Configurações de Privacidade</h2>
-                <p>Controle sua privacidade e dados</p>
-              </div>
-
-              <div class="settings-cards">
-                <div class="card">
-                  <h3>Visibilidade do Perfil</h3>
-                  <div class="radio-group">
-                    <label class="radio-option">
-                      <input type="radio" name="profileVisibility" value="public" checked>
-                      <span class="radio-checkmark"></span>
-                      <div class="radio-content">
-                        <div class="radio-title">Público</div>
-                        <div class="radio-description">Qualquer pessoa na empresa pode ver seu perfil</div>
-                      </div>
-                    </label>
-                    <label class="radio-option">
-                      <input type="radio" name="profileVisibility" value="private">
-                      <span class="radio-checkmark"></span>
-                      <div class="radio-content">
-                        <div class="radio-title">Privado</div>
-                        <div class="radio-description">Apenas pessoas que você aprovar podem ver seu perfil</div>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <h3>Controles de Dados</h3>
-                  <div class="data-controls">
-                    <div class="data-control-item">
-                      <div class="data-control-info">
-                        <div class="data-control-title">Exportar Dados</div>
-                        <div class="data-control-description">Baixe uma cópia dos seus dados</div>
-                      </div>
-                      <button class="btn-outline">Exportar</button>
-                    </div>
-                    <div class="data-control-item">
-                      <div class="data-control-info">
-                        <div class="data-control-title">Excluir Conta</div>
-                        <div class="data-control-description">Exclua permanentemente sua conta e dados</div>
-                      </div>
-                      <button class="btn-danger">Excluir Conta</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Painel Integrações -->
-            <div class="settings-panel" id="integracao-panel">
-              <div class="panel-header">
-                <h2>Integrações</h2>
-                <p>Conecte suas redes sociais e ferramentas</p>
-              </div>
-
-              <div class="settings-cards">
                 <div class="card">
                   <h3>Redes Sociais Conectadas</h3>
-                  <div class="integrations-list">
-                    <div class="integration-item connected">
-                      <div class="integration-icon instagram"></div>
-                      <div class="integration-info">
-                        <div class="integration-name">Instagram</div>
-                        <div class="integration-status">Conectado</div>
+                  <div class="social-connections">
+                    <div class="social-connection">
+                      <div class="social-info">
+                        <div class="social-icon i-instagram"></div>
+                        <div class="social-details">
+                          <div class="social-name">Instagram</div>
+                          <div class="social-status">Conectado</div>
+                        </div>
                       </div>
                       <button class="btn-outline">Gerenciar</button>
                     </div>
-                    <div class="integration-item connected">
-                      <div class="integration-icon facebook"></div>
-                      <div class="integration-info">
-                        <div class="integration-name">Facebook</div>
-                        <div class="integration-status">Conectado</div>
+                    <div class="social-connection">
+                      <div class="social-info">
+                        <div class="social-icon i-facebook"></div>
+                        <div class="social-details">
+                          <div class="social-name">Facebook</div>
+                          <div class="social-status">Conectado</div>
+                        </div>
                       </div>
                       <button class="btn-outline">Gerenciar</button>
                     </div>
-                    <div class="integration-item">
-                      <div class="integration-icon twitter"></div>
-                      <div class="integration-info">
-                        <div class="integration-name">Twitter</div>
-                        <div class="integration-status">Não conectado</div>
+                    <div class="social-connection">
+                      <div class="social-info">
+                        <div class="social-icon i-twitter"></div>
+                        <div class="social-details">
+                          <div class="social-name">Twitter</div>
+                          <div class="social-status">Não conectado</div>
+                        </div>
                       </div>
                       <button class="btn-primary">Conectar</button>
                     </div>
@@ -378,53 +330,238 @@
               </div>
             </div>
 
-            <!-- Painel Segurança -->
-            <div class="settings-panel" id="seguranca-panel">
+            <!-- Painel Gestão de Projetos -->
+            <div class="settings-panel" id="projetos-panel">
               <div class="panel-header">
-                <h2>Segurança</h2>
-                <p>Proteja sua conta e dados</p>
+                <h2>Gestão de Projetos</h2>
+                <p>Configure como você gerencia seus projetos</p>
               </div>
 
               <div class="settings-cards">
                 <div class="card">
-                  <h3>Alterar Senha</h3>
-                  <form class="security-form">
+                  <h3>Preferências de Projetos</h3>
+                  <form class="settings-form">
                     <div class="form-group">
-                      <label for="currentPassword">Senha Atual</label>
-                      <input type="password" id="currentPassword" placeholder="Digite sua senha atual">
+                      <label for="projectView">Visualização Padrão</label>
+                      <select id="projectView">
+                        <option value="list" selected>Lista</option>
+                        <option value="board">Quadro</option>
+                        <option value="calendar">Calendário</option>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label for="newPassword">Nova Senha</label>
-                      <input type="password" id="newPassword" placeholder="Digite a nova senha">
+                      <label for="autoArchive">Arquivar Projetos Automaticamente</label>
+                      <select id="autoArchive">
+                        <option value="never">Nunca</option>
+                        <option value="30" selected>30 dias após conclusão</option>
+                        <option value="60">60 dias após conclusão</option>
+                        <option value="90">90 dias após conclusão</option>
+                      </select>
                     </div>
-                    <div class="form-group">
-                      <label for="confirmPassword">Confirmar Nova Senha</label>
-                      <input type="password" id="confirmPassword" placeholder="Confirme a nova senha">
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Notificações de Prazo</div>
+                        <div class="toggle-description">Receber lembretes de prazos próximos</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
                     </div>
                     <div class="form-actions">
-                      <button type="submit" class="btn-primary">Alterar Senha</button>
+                      <button type="button" class="btn-secondary">Cancelar</button>
+                      <button type="submit" class="btn-primary">Salvar Preferências</button>
                     </div>
                   </form>
                 </div>
 
                 <div class="card">
-                  <h3>Sessões Ativas</h3>
-                  <div class="sessions-list">
-                    <div class="session-item current">
-                      <div class="session-info">
-                        <div class="session-device">Chrome • Windows</div>
-                        <div class="session-details">São Paulo, Brasil • Agora</div>
+                  <h3>Templates de Projeto</h3>
+                  <div class="templates-list">
+                    <div class="template-item">
+                      <div class="template-info">
+                        <div class="template-name">Template Marketing Básico</div>
+                        <div class="template-description">Estrutura padrão para campanhas de marketing</div>
                       </div>
-                      <div class="session-status">Atual</div>
+                      <button class="btn-outline">Usar</button>
                     </div>
-                    <div class="session-item">
-                      <div class="session-info">
-                        <div class="session-device">Safari • iPhone</div>
-                        <div class="session-details">São Paulo, Brasil • 2 horas atrás</div>
+                    <div class="template-item">
+                      <div class="template-info">
+                        <div class="template-name">Template Lançamento</div>
+                        <div class="template-description">Fluxo completo para lançamento de produtos</div>
                       </div>
-                      <button class="btn-outline">Encerrar</button>
+                      <button class="btn-outline">Usar</button>
                     </div>
                   </div>
+                  <div class="template-actions">
+                    <button class="btn-primary">Criar Novo Template</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel Briefing -->
+            <div class="settings-panel" id="briefing-panel">
+              <div class="panel-header">
+                <h2>Configurações de Briefing</h2>
+                <p>Personalize os templates e fluxos de briefing</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Template de Briefing Padrão</h3>
+                  <form class="settings-form">
+                    <div class="form-group">
+                      <label for="briefingTemplate">Modelo de Briefing</label>
+                      <select id="briefingTemplate">
+                        <option value="simple" selected>Briefing Simples</option>
+                        <option value="detailed">Briefing Detalhado</option>
+                        <option value="creative">Briefing Criativo</option>
+                        <option value="custom">Personalizado</option>
+                      </select>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Aprovação Obrigatória</div>
+                        <div class="toggle-description">Exigir aprovação antes de iniciar projetos</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Notificação por E-mail</div>
+                        <div class="toggle-description">Enviar e-mail quando novo briefing for criado</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn-secondary">Cancelar</button>
+                      <button type="submit" class="btn-primary">Salvar Configurações</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="card">
+                  <h3>Campos Personalizados</h3>
+                  <div class="custom-fields">
+                    <div class="field-item">
+                      <div class="field-info">
+                        <div class="field-name">Orçamento do Cliente</div>
+                        <div class="field-type">Campo numérico</div>
+                      </div>
+                      <div class="field-actions">
+                        <button class="btn-outline small">Editar</button>
+                        <button class="btn-danger small">Remover</button>
+                      </div>
+                    </div>
+                    <div class="field-item">
+                      <div class="field-info">
+                        <div class="field-name">Público-Alvo</div>
+                        <div class="field-type">Campo de texto</div>
+                      </div>
+                      <div class="field-actions">
+                        <button class="btn-outline small">Editar</button>
+                        <button class="btn-danger small">Remover</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field-actions">
+                    <button class="btn-primary">Adicionar Campo</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel Equipe -->
+            <div class="settings-panel" id="equipe-panel">
+              <div class="panel-header">
+                <h2>Gestão de Equipe</h2>
+                <p>Gerencie membros da equipe e permissões</p>
+              </div>
+
+              <div class="settings-cards">
+                <div class="card">
+                  <h3>Membros da Equipe</h3>
+                  <div class="team-members">
+                    <div class="team-member">
+                      <div class="member-avatar">AS</div>
+                      <div class="member-info">
+                        <div class="member-name">Alone Souza</div>
+                        <div class="member-role">Administrador</div>
+                      </div>
+                      <div class="member-actions">
+                        <button class="btn-outline small">Editar</button>
+                      </div>
+                    </div>
+                    <div class="team-member">
+                      <div class="member-avatar">MJ</div>
+                      <div class="member-info">
+                        <div class="member-name">Maria Julia</div>
+                        <div class="member-role">Designer</div>
+                      </div>
+                      <div class="member-actions">
+                        <button class="btn-outline small">Editar</button>
+                      </div>
+                    </div>
+                    <div class="team-member">
+                      <div class="member-avatar">PC</div>
+                      <div class="member-info">
+                        <div class="member-name">Pedro Costa</div>
+                        <div class="member-role">Redator</div>
+                      </div>
+                      <div class="member-actions">
+                        <button class="btn-outline small">Editar</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="team-actions">
+                    <button class="btn-primary">Convidar Membro</button>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>Permissões e Acessos</h3>
+                  <form class="settings-form">
+                    <div class="form-group">
+                      <label for="defaultRole">Função Padrão para Novos Membros</label>
+                      <select id="defaultRole">
+                        <option value="viewer">Visualizador</option>
+                        <option value="editor" selected>Editor</option>
+                        <option value="manager">Gerente</option>
+                        <option value="admin">Administrador</option>
+                      </select>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Aprovação de Conteúdo</div>
+                        <div class="toggle-description">Exigir aprovação antes da publicação</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="toggle-item">
+                      <div class="toggle-info">
+                        <div class="toggle-title">Acesso a Relatórios</div>
+                        <div class="toggle-description">Permitir que todos vejam relatórios</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn-secondary">Cancelar</button>
+                      <button type="submit" class="btn-primary">Salvar Permissões</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -435,6 +572,6 @@
   </div>
 
   <script src="/Menu/menu.js"></script>
-  <script src="/Configuracoes/config.js"></script>
+  <script src="/Configuração/config.js"></script>
 </body>
 </html>
